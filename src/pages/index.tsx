@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import CheckoutBanner from '../components/CheckoutBanner';
 import Header from '../components/header';
 import Hero from '../components/hero';
@@ -9,35 +9,23 @@ interface ServiceCard {
   desc: string;
 }
 
+const services: ServiceCard[] = [
+  { title: "Harmonização Facial", desc: "Realce sua beleza natural com equilíbrio e sofisticação." },
+  { title: "Bioestimuladores", desc: "Tratamentos avançados para firmeza e rejuvenescimento da pele." },
+  { title: "Lentes de Resina", desc: "Transformação do sorriso com técnica minimamente invasiva." },
+  { title: "Protocolos VIP", desc: "Planos personalizados para cuidados faciais e corporais completos." }
+];
+
 const EsteticaPage: React.FC = () => {
-  const [scrolled, setScrolled] = useState<boolean>(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const services: ServiceCard[] = [
-    { title: "Harmonização Facial", desc: "Realce sua beleza natural com equilíbrio e sofisticação." },
-    { title: "Bioestimuladores", desc: "Tratamentos avançados para firmeza e rejuvenescimento da pele." },
-    { title: "Lentes de Resina", desc: "Transformação do sorriso com técnica minimamente invasiva." },
-    { title: "Protocolos VIP", desc: "Planos personalizados para cuidados faciais e corporais completos." }
-  ];
-
   return (
     <div className="min-h-screen bg-[#FAF7F2]">
       {/* Container Fixo Superior com Banner + Header */}
       <header className="fixed top-0 left-0 w-full z-50">
         <CheckoutBanner />
-        
         <Header />
       </header>
 
+      {/* Hero com espaçamento superior interno para compensar o header fixo */}
       <Hero />
 
       {/* SERVICES GRID */}
