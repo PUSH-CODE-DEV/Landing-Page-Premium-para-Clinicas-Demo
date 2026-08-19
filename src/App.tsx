@@ -1,4 +1,4 @@
-import EsteticaPage from './pages/Estetica/index.tsx'; 
+import EsteticaPage from './pages/index.tsx'; 
 
 function App() {
   return (
