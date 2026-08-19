@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import CheckoutBanner from '../../components/CheckoutBanner'; // Importe o componente da barra de checkout
+import CheckoutBanner from './CheckoutBanner';
 
-// Interfaces para tipagem
 interface ServiceCard {
   title: string;
   desc: string;
@@ -25,25 +24,27 @@ const EsteticaPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF7F2]">
-      {/* 1. BARRA DE CHECKOUT DA DEMO NO TOPO DO SITE */}
+      {/* 1. BARRA DE CHECKOUT DA DEMO (COM DESTAQUE DOURADO/AMARELO) */}
       <div className="relative z-50">
         <CheckoutBanner />
       </div>
 
-      {/* 2. HEADER/NAVBAR AJUSTADO PARA FICAR LOGO ABAIXO DA BARRA */}
-      <nav className={`sticky top-0 w-full z-40 transition-all duration-500 px-6 py-4 flex justify-between items-center ${
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-[#FAF7F2]/80 backdrop-blur-sm"
+      {/* 2. HEADER DA PÁGINA (BACKGROUND BRANCO/SÓLIDO QUANDO ROLA) */}
+      <nav className={`sticky top-0 w-full z-40 transition-all duration-300 px-6 py-4 flex justify-between items-center ${
+        scrolled 
+          ? "bg-white shadow-md py-3 border-b border-amber-100" 
+          : "bg-[#FAF7F2]/95 backdrop-blur-md border-b border-amber-900/10"
       }`}>
-        <div className="serif text-2xl font-semibold tracking-widest text-champagne-dark">
+        <div className="serif text-2xl font-semibold tracking-widest text-[#C5A059]">
           LUMINA <span className="text-[#2C2318] font-light">ESTÉTICA</span>
         </div>
-        <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest font-light text-[#2C2318]">
-          <a href="#inicio" className="hover:text-champagne transition-colors">Início</a>
-          <a href="#procedimentos" className="hover:text-champagne transition-colors">Procedimentos</a>
-          <a href="#sobre" className="hover:text-champagne transition-colors">A Clínica</a>
-          <a href="#contato" className="hover:text-champagne transition-colors">Contato</a>
+        <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest font-medium text-[#2C2318]">
+          <a href="#inicio" className="hover:text-[#C5A059] transition-colors">Início</a>
+          <a href="#procedimentos" className="hover:text-[#C5A059] transition-colors">Procedimentos</a>
+          <a href="#sobre" className="hover:text-[#C5A059] transition-colors">A Clínica</a>
+          <a href="#contato" className="hover:text-[#C5A059] transition-colors">Contato</a>
         </div>
-        <button className="bg-champagne text-white px-6 py-2 text-xs uppercase tracking-widest hover:bg-champagne-dark transition-all">
+        <button className="bg-[#C5A059] text-white px-6 py-2 text-xs uppercase tracking-widest hover:bg-[#b08d49] transition-all font-semibold shadow-sm">
           Agendar
         </button>
       </nav>
@@ -60,7 +61,7 @@ const EsteticaPage: React.FC = () => {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl py-12">
-          <span className="uppercase tracking-[0.3em] text-champagne-dark text-sm mb-4 block">Bem-vindo à excelência</span>
+          <span className="uppercase tracking-[0.3em] text-[#C5A059] text-sm mb-4 block font-semibold">Bem-vindo à excelência</span>
           <h1 className="serif text-5xl md:text-7xl text-[#2C2318] mb-8 font-light italic leading-tight">
             Sua beleza merece ser <br />
             <span className="not-italic font-normal uppercase tracking-tighter">Única e Atemporal</span>
@@ -68,7 +69,7 @@ const EsteticaPage: React.FC = () => {
           <p className="text-[#5C4A32] max-w-xl mx-auto mb-10 font-light leading-relaxed">
             Especialistas em procedimentos avançados que respeitam sua identidade e realçam o que você tem de melhor.
           </p>
-          <a href="#procedimentos" className="inline-block border border-champagne text-champagne-dark px-10 py-4 uppercase text-xs tracking-[0.2em] hover:bg-champagne hover:text-white transition-all">
+          <a href="#procedimentos" className="inline-block border-2 border-[#C5A059] text-[#2C2318] font-medium px-10 py-4 uppercase text-xs tracking-[0.2em] hover:bg-[#C5A059] hover:text-white transition-all">
             Conheça nossos serviços
           </a>
         </div>
@@ -78,14 +79,14 @@ const EsteticaPage: React.FC = () => {
       <section id="procedimentos" className="py-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto text-center mb-20">
           <h2 className="serif text-4xl text-[#2C2318] mb-4 uppercase tracking-wider">Procedimentos</h2>
-          <div className="w-12 h-[1px] bg-champagne mx-auto"></div>
+          <div className="w-12 h-[2px] bg-[#C5A059] mx-auto"></div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {services.map((s, i) => (
-            <div key={i} className="group p-8 border border-gray-50 hover:border-champagne-light hover:bg-[#FAF7F2] transition-all duration-500 text-center">
-              <div className="w-12 h-12 border border-champagne-light rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-champagne transition-all">
-                <span className="text-champagne-dark group-hover:text-white font-light italic serif">0{i+1}</span>
+            <div key={i} className="group p-8 border border-amber-100 hover:border-[#C5A059] hover:bg-[#FAF7F2] transition-all duration-500 text-center">
+              <div className="w-12 h-12 border border-[#C5A059] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#C5A059] transition-all">
+                <span className="text-[#C5A059] group-hover:text-white font-light italic serif">0{i+1}</span>
               </div>
               <h3 className="serif text-xl mb-4 text-[#2C2318]">{s.title}</h3>
               <p className="text-sm text-[#8B7355] leading-relaxed font-light">{s.desc}</p>
